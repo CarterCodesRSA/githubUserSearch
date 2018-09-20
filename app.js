@@ -1,6 +1,7 @@
 const searchUser = document.getElementById("searchUser");
 
 const github = new GitHub();
+const ui = new UI();
 
 searchUser.addEventListener("keyup", e => {
   const userText = e.target.value;
@@ -12,13 +13,15 @@ searchUser.addEventListener("keyup", e => {
         if (result.profileData.message == "Not Found") {
           console.log("user not found");
         } else {
-          console.log("User Found", result);
+          ui.showProfile(result.profileData);
+          console.log("User Data", result.profileData);
         }
       })
       .catch(err => {
         console.log("This is the error", err);
       });
   } else {
-    userText = "";
+    ui.clearProfile;
+    console.log("The text is");
   }
 });
