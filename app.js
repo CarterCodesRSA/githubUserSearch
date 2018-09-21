@@ -11,10 +11,11 @@ searchUser.addEventListener("keyup", e => {
       .getUser(userText)
       .then(result => {
         if (result.profileData.message == "Not Found") {
-          console.log("user not found");
+          ui.showAlert("User not found", "alert alert-danger");
         } else {
           ui.showProfile(result.profileData);
-          console.log("User Data", result.profileData);
+          ui.showRepos(result.repos);
+          console.log(result.repos);
         }
       })
       .catch(err => {
